@@ -645,36 +645,74 @@
     })();
   </script>
 <!-- MÚSICA DE FONDO -->
-<iframe id="bg-music"
-  width="0" height="0"
-  src="https://www.youtube.com/embed/b7pE8AG1jjE?autoplay=1&loop=1&playlist=b7pE8AG1jjE"
+<iframe id="bg-music" width="0" height="0"
+  src=""
   frameborder="0"
   allow="autoplay">
 </iframe>
 
-<!-- BOTÓN DE REPRODUCIR MÚSICA -->
-<button id="playButton"
-        style="position:fixed;bottom:20px;right:20px;padding:12px 18px;
-        background-color:#B05635;color:white;border:none;
-        border-radius:30px;font-family:Montserrat, sans-serif;
-        cursor:pointer;box-shadow:0 4px 10px rgba(0,0,0,.2);
-        z-index:999;font-size:.9rem;letter-spacing:.05em;">
-  🎵 Reproducir música
+<!-- BOTÓN MUSICAL REDONDO -->
+<button id="musicBtn"
+  style="position:fixed;bottom:20px;right:20px;width:56px;height:56px;
+  background-color:#B05635;color:white;border:none;border-radius:50%;
+  font-size:1.3rem;cursor:pointer;box-shadow:0 4px 10px rgba(0,0,0,.25);
+  z-index:999;display:flex;align-items:center;justify-content:center;
+  transition:background-color .3s, transform .2s;">
+  🎵
 </button>
 
+<style>
+  /* Efecto pulse elegante */
+  #musicBtn::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    top: 0; left: 0;
+    box-shadow: 0 0 0 0 rgba(176,86,53,0.4);
+    opacity: 0;
+    transition: box-shadow 0.6s ease-out, opacity 0.6s ease-out;
+    z-index: -1;
+  }
+  #musicBtn.playing::after {
+    box-shadow: 0 0 0 12px rgba(176,86,53,0);
+    opacity: 1;
+  }
+</style>
+
 <script>
-  const btn = document.getElementById('playButton');
-  const music = document.getElementById('bg-music');
-  btn.addEventListener('click', () => {
-    // Para móviles y navegadores que bloquean autoplay
-    const src = "https://www.youtube.com/embed/b7pE8AG1jjE?autoplay=1&loop=1&playlist=b7pE8AG1jjE";
-    music.src = src;
-    btn.style.display = 'none';
+  const musicBtn = document.getElementById('musicBtn');
+  const musicFrame = document.getElementById('bg-music');
+  let isPlaying = false;
+
+  function playMusic() {
+    musicFrame.src = "https://www.youtube.com/embed/b7pE8AG1jjE?autoplay=1&loop=1&playlist=b7pE8AG1jjE";
+    musicBtn.innerHTML = "🔇";
+    musicBtn.style.backgroundColor = "#6C715C"; // verde olivo cuando suena
+    musicBtn.classList.add("playing");
+    isPlaying = true;
+  }
+
+  function pauseMusic() {
+    musicFrame.src = "";
+    musicBtn.innerHTML = "🎵";
+    musicBtn.style.backgroundColor = "#B05635"; // terracota cuando pausado
+    musicBtn.classList.remove("playing");
+    isPlaying = false;
+  }
+
+  musicBtn.addEventListener('click', () => {
+    if (!isPlaying) playMusic();
+    else pauseMusic();
+    musicBtn.style.transform = "scale(0.9)";
+    setTimeout(() => (musicBtn.style.transform = "scale(1)"), 150);
   });
 </script>
 
 </body>
 </html>
+
 
 
 
