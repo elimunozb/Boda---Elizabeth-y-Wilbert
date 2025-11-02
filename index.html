@@ -645,6 +645,35 @@
       setInterval(updateCountdown, 60000);
     })();
   </script>
+<!-- MÚSICA DE FONDO -->
+<iframe id="bg-music"
+  width="0" height="0"
+  src="https://www.youtube.com/embed/b7pE8AG1jjE?autoplay=1&loop=1&playlist=b7pE8AG1jjE"
+  frameborder="0"
+  allow="autoplay">
+</iframe>
+
+<!-- BOTÓN DE REPRODUCIR MÚSICA -->
+<button id="playButton"
+        style="position:fixed;bottom:20px;right:20px;padding:12px 18px;
+        background-color:#B05635;color:white;border:none;
+        border-radius:30px;font-family:Montserrat, sans-serif;
+        cursor:pointer;box-shadow:0 4px 10px rgba(0,0,0,.2);
+        z-index:999;font-size:.9rem;letter-spacing:.05em;">
+  🎵 Reproducir música
+</button>
+
+<script>
+  const btn = document.getElementById('playButton');
+  const music = document.getElementById('bg-music');
+  btn.addEventListener('click', () => {
+    // Para móviles y navegadores que bloquean autoplay
+    const src = "https://www.youtube.com/embed/b7pE8AG1jjE?autoplay=1&loop=1&playlist=b7pE8AG1jjE";
+    music.src = src;
+    btn.style.display = 'none';
+  });
+</script>
 
 </body>
 </html>
+
