@@ -644,14 +644,9 @@
       setInterval(updateCountdown, 60000);
     })();
   </script>
-<!-- MÚSICA DE FONDO -->
-<iframe id="bg-music" width="0" height="0"
-  src=""
-  frameborder="0"
-  allow="autoplay">
-</iframe>
+<audio id="bg-music" src="musica.mp3" loop></audio>
 
-<!-- BOTÓN MUSICAL REDONDO -->
+<!-- BOTÓN REDONDO DE MÚSICA -->
 <button id="musicBtn"
   style="position:fixed;bottom:20px;right:20px;width:56px;height:56px;
   background-color:#B05635;color:white;border:none;border-radius:50%;
@@ -662,7 +657,6 @@
 </button>
 
 <style>
-  /* Efecto pulse elegante */
   #musicBtn::after {
     content: "";
     position: absolute;
@@ -683,21 +677,21 @@
 
 <script>
   const musicBtn = document.getElementById('musicBtn');
-  const musicFrame = document.getElementById('bg-music');
+  const audio = document.getElementById('bg-music');
   let isPlaying = false;
 
   function playMusic() {
-    musicFrame.src = "https://www.youtube.com/embed/b7pE8AG1jjE?autoplay=1&loop=1&playlist=b7pE8AG1jjE";
+    audio.play();
     musicBtn.innerHTML = "🔇";
-    musicBtn.style.backgroundColor = "#6C715C"; // verde olivo cuando suena
+    musicBtn.style.backgroundColor = "#6C715C";
     musicBtn.classList.add("playing");
     isPlaying = true;
   }
 
   function pauseMusic() {
-    musicFrame.src = "";
+    audio.pause();
     musicBtn.innerHTML = "🎵";
-    musicBtn.style.backgroundColor = "#B05635"; // terracota cuando pausado
+    musicBtn.style.backgroundColor = "#B05635";
     musicBtn.classList.remove("playing");
     isPlaying = false;
   }
@@ -712,6 +706,7 @@
 
 </body>
 </html>
+
 
 
 
