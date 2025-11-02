@@ -359,38 +359,8 @@
       </defs>
     </svg>
     <svg id="icon-music" xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="url(#gold-gradient)" viewBox="0 0 24 24"><path d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6z"/></svg>
-    <svg id="icon-sound-off" xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="url(#gold-gradient)" viewBox="0 0 24 24" style="display:none;">
-    <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v8.06A4.98 4.98 0 0 0 16.5 12zm3.5 0c0 3.31-2.69 6-6 6-.66 0-1.29-.11-1.88-.31l1.49-1.49c.13-.13.21-.3.21-.49v-8.42c0-.19-.08-.36-.21-.49l-1.49-1.49c.59-.2 1.22-.31 1.88-.31 3.31 0 6 2.69 6 6zm-15.73.73L3.27 18h2l2.99-4H11v-2H8.26l2.99-4h2l.69-.69L4.77 5.23 3.5 6.5 4.77 7.77 6.5 9.5v5L4.77 16.23z"/>
-  </svg>
+    <svg id="icon-mute" xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="url(#gold-gradient)" viewBox="0 0 24 24" style="display:none;"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v8.06A4.98 4.98 0 0 0 16.5 12zm3.5 0c0 3.31-2.69 6-6 6-.66 0-1.29-.11-1.88-.31l1.49-1.49c.13-.13.21-.3.21-.49v-8.42c0-.19-.08-.36-.21-.49l-1.49-1.49c.59-.2 1.22-.31 1.88-.31 3.31 0 6 2.69 6 6zm-15.73.73L3.27 18h2l2.99-4H11v-2H8.26l2.99-4h2l.69-.69L4.77 5.23 3.5 6.5 4.77 7.77 6.5 9.5v5L4.77 16.23z"/></svg>
   </button>
-<script>
-  const musicBtn = document.getElementById('musicBtn');
-  const audio = document.getElementById('bg-music');
-  const iconOn = document.getElementById('icon-sound-on');
-  const iconOff = document.getElementById('icon-sound-off');
-  let isPlaying = false;
-
-  musicBtn.addEventListener('click', async () => {
-    try {
-      if (!isPlaying) {
-        await audio.play();
-        musicBtn.style.backgroundColor = "#9CAF88"; // verde olivo
-        iconOn.style.display = "block";
-        iconOff.style.display = "none";
-      } else {
-        audio.pause();
-        musicBtn.style.backgroundColor = "#9E4624"; // terracota
-        iconOn.style.display = "none";
-        iconOff.style.display = "block";
-      }
-      isPlaying = !isPlaying;
-      musicBtn.style.transform = "scale(0.9)";
-      setTimeout(() => (musicBtn.style.transform = "scale(1)"), 150);
-    } catch (err) {
-      console.warn('El navegador bloqueó la reproducción automática:', err);
-    }
-  });
-</script>
 
   <style>
     #musicBtn::after{content:"";position:absolute;border-radius:50%;width:100%;height:100%;top:0;left:0;
@@ -433,6 +403,22 @@
   </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
