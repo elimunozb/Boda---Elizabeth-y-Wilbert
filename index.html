@@ -6,426 +6,220 @@
   <title>Elizabeth & Wilbert · 18 Abril 2026</title>
 
   <!-- Fuentes elegantes -->
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Allura&family=Montserrat+Alternates:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
   <style>
-   :root {
-  --bg-paper: #F7F4EF;         /* papel artesanal claro */
-  --text-main: #3A2E29;        /* café oscuro */
-  --accent-terracotta: #9E4624;/* ← tu nuevo terracota */
-  --accent-olive: #9CAF88;     /* ← tu nuevo verde olivo */
-  --card-bg: #FFFFFFEE;        /* blanco con leve transparencia */
-  --radius-lg: 1.5rem;
-  --radius-full: 999px;
-  --font-title: "Cormorant Garamond", Georgia, "Times New Roman", serif;
-  --font-body: "Montserrat", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --shadow-card: 0 24px 48px rgba(0,0,0,.07);
-  --border-card: 1px solid #0000000d;
-}
-    /* RESET SUAVE */
-    * {
-      box-sizing: border-box;
-      -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
-      margin: 0;
-    }
+  :root {
+    --bg-paper: #F7F4EF;
+    --text-main: #3A2E29;
+    --accent-terracotta: #9E4624;
+    --accent-olive: #9CAF88;
+    --card-bg: #FFFFFFEE;
+    --radius-lg: 1.5rem;
+    --radius-full: 999px;
+    --font-title: 'Cormorant Garamond', serif;
+    --font-body: 'Montserrat Alternates', sans-serif;
+    --shadow-card: 0 24px 48px rgba(0,0,0,.07);
+    --border-card: 1px solid #0000000d;
+  }
 
-    body {
-      background-color: var(--bg-paper);
-      color: var(--text-main);
-      font-family: var(--font-body);
-      line-height: 1.5;
-      display: flex;
-      flex-direction: column;
-      scroll-behavior: smooth;
-    }
+  /* ANIMACIÓN NOMBRES */
+  @keyframes fadeUp {
+    0% {opacity: 0; transform: translateY(20px);}
+    100% {opacity: 1; transform: translateY(0);}
+  }
 
-    img {
-      max-width: 100%;
-      height: auto;
-      border-radius: var(--radius-lg);
-      display: block;
-    }
+  .hero-intro, .hero-names {
+    animation: fadeUp 1.5s ease-out both;
+  }
+  .hero-names { animation-delay: 0.5s; }
 
-    a {
-      color: var(--accent-terracotta);
-    }
+  /* RESET */
+  * { box-sizing: border-box; margin: 0; -webkit-font-smoothing: antialiased; }
 
-    /* CONTENEDOR SECCIONES */
-    .section {
-      max-width: 900px;
-      margin: 3rem auto;
-      padding: 0 1.25rem;
-      position: relative;
-    }
+  body {
+    background-color: var(--bg-paper);
+    color: var(--text-main);
+    font-family: var(--font-body);
+    line-height: 1.5;
+    display: flex;
+    flex-direction: column;
+    scroll-behavior: smooth;
+  }
 
-    /* TARJETAS / CARDS */
-    .card {
-      background-color: var(--card-bg);
-      border-radius: var(--radius-lg);
-      padding: 1.5rem 1.25rem;
-      box-shadow: var(--shadow-card);
-      border: var(--border-card);
-      margin-bottom: 1.5rem;
-      opacity: 0;
-      transform: translateY(24px);
-      animation: fadeUp .8s cubic-bezier(.16,.84,.44,1) forwards;
-    }
+  a { color: var(--accent-terracotta); text-decoration:none; }
 
-    /* DELAY SUAVE ENTRE CARDS */
-    .card.delay-1 { animation-delay: .1s; }
-    .card.delay-2 { animation-delay: .2s; }
-    .card.delay-3 { animation-delay: .3s; }
-    .card.delay-4 { animation-delay: .4s; }
+  .section {
+    max-width: 900px; margin: 3rem auto; padding: 0 1.25rem; position: relative;
+  }
 
-    @keyframes fadeUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+  .card {
+    background-color: var(--card-bg);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem 1.25rem;
+    box-shadow: var(--shadow-card);
+    border: var(--border-card);
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    transform: translateY(24px);
+    animation: fadeUp .8s cubic-bezier(.16,.84,.44,1) forwards;
+  }
 
+  .card.delay-1 {animation-delay:.1s;}
+  .card.delay-2 {animation-delay:.2s;}
+  .card.delay-3 {animation-delay:.3s;}
+  .card.delay-4 {animation-delay:.4s;}
 
-    /* TITULOS DE CADA BLOQUE */
-    .section-title {
-      font-family: var(--font-title);
-      color: var(--text-main);
-      font-size: 1.6rem;
-      font-weight: 500;
-      text-align: center;
-      letter-spacing: .03em;
-      margin-bottom: 1rem;
-    }
+  .section-title {
+    font-family: var(--font-title);
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: var(--text-main);
+    text-align: center;
+    margin-bottom: 1rem;
+  }
 
-    .subsection-title {
-      font-family: var(--font-title);
-      font-size: 1.2rem;
-      font-weight: 500;
-      color: var(--accent-terracotta);
-      margin-bottom: .5rem;
-      text-align: center;
-      letter-spacing: .03em;
-    }
+  .subsection-title {
+    font-family: var(--font-title);
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--accent-terracotta);
+    text-align: center;
+    margin-bottom: .5rem;
+  }
 
-    /* TEXTO GENERAL */
-    .text-center {
-      text-align: center;
-    }
+  .text-center {text-align:center;}
+  .info-row {font-size:.95rem;margin-bottom:.5rem;text-align:center;}
+  .label {font-weight:600;color:var(--accent-terracotta);}
+  .note {font-size:.9rem;color:#6b5a52;text-align:center;line-height:1.5;}
 
-    .info-row {
-      font-size: .95rem;
-      margin-bottom: .5rem;
-      text-align: center;
-    }
+  .btn-pill {
+    display:inline-block;
+    background-color:var(--accent-terracotta);
+    color:#fff;
+    font-size:.9rem;
+    font-weight:500;
+    padding:.9rem 1.4rem;
+    border-radius:var(--radius-full);
+    min-width:200px;
+    text-align:center;
+    box-shadow:0 16px 32px rgba(158,70,36,.3);
+  }
+  .btn-dark {
+    background-color:var(--text-main);
+    box-shadow:0 16px 32px rgba(0,0,0,.2);
+  }
+  .btn-group {
+    display:flex;flex-direction:column;align-items:center;gap:.75rem;margin-top:1rem;
+  }
+  @media(min-width:480px){.btn-group{flex-direction:row;flex-wrap:wrap;justify-content:center;}}
 
-    .label {
-      font-weight: 600;
-      color: var(--accent-terracotta);
-    }
+  .grid-2{display:grid;gap:1rem;}
+  @media(min-width:700px){.grid-2{grid-template-columns:1fr 1fr;}}
 
-    .note {
-      font-size: .9rem;
-      color: #6b5a52;
-      text-align: center;
-      line-height: 1.5;
-    }
+  /* HERO */
+  .hero-wrap {
+    min-height: 90vh;
+    padding: 3rem 1.5rem 4rem;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center;
+    background-color: var(--bg-paper);
+    position: relative; overflow: hidden;
+  }
 
-    /* PROGRAMA / LISTAS */
-    .program-list {
-      font-size: .95rem;
-      padding-left: 0;
-      list-style: none;
-      line-height: 1.6;
-      text-align: center;
-    }
+  .hero-wrap::before,
+  .hero-wrap::after {
+    content: ""; position: absolute; border-radius: 50%; filter: blur(60px); opacity: .2;
+  }
+  .hero-wrap::before {
+    width:320px;height:320px;top:-60px;left:-60px;
+    background: radial-gradient(circle at 30% 30%, rgba(158,70,36,.35) 0%, rgba(247,244,239,0) 70%);
+  }
+  .hero-wrap::after {
+    width:360px;height:360px;bottom:-80px;right:-80px;
+    background: radial-gradient(circle at 30% 30%, rgba(156,175,136,.35) 0%, rgba(247,244,239,0) 70%);
+  }
 
-    /* BOTONES */
-    .btn-pill {
-      display: inline-block;
-      background-color: var(--accent-terracotta);
-      color: #fff;
-      text-decoration: none;
-      font-size: .9rem;
-      font-weight: 500;
-      padding: .9rem 1.4rem;
-      border-radius: var(--radius-full);
-      letter-spacing: .05em;
-      text-align: center;
-      min-width: 200px;
-      box-shadow: 0 16px 32px rgba(176,86,53,.3);
-    }
+  .hero-photo {
+    width:160px;height:200px;
+    border-radius:var(--radius-lg);
+    background-size:cover;background-position:center;
+    box-shadow:0 24px 48px rgba(0,0,0,.15);
+    border:2px solid #ffffffaa;
+    margin-bottom:1.5rem;
+  }
 
-    .btn-dark {
-      background-color: var(--text-main);
-      box-shadow: 0 16px 32px rgba(0,0,0,.2);
-    }
+  .hero-intro {
+    font-family: var(--font-body);
+    font-size: .8rem;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: var(--accent-terracotta);
+    margin-bottom: .75rem;
+  }
 
-    .btn-group {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: .75rem;
-      margin-top: 1rem;
-    }
+  .hero-names {
+    font-family:'Allura', cursive;
+    font-size: clamp(3rem,6vw,4rem);
+    font-weight:400;
+    color:var(--text-main);
+    letter-spacing:.02em;
+    line-height:1.1;
+  }
 
-    @media(min-width:480px){
-      .btn-group {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-    }
+  .amp {color:var(--accent-terracotta);}
+  .hero-dateplace {
+    margin-top:.75rem;
+    font-size:.9rem;
+    letter-spacing:.15em;
+    text-transform:uppercase;
+  }
+  .hero-cta {margin-top:2rem;}
 
-    /* GRID DOS COLUMNAS EN ESCRITORIO */
-    .grid-2 {
-      display: grid;
-      gap: 1rem;
-    }
-    @media(min-width:700px){
-      .grid-2 {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
+  .countdown-box{text-align:center;font-weight:500;color:var(--text-main);}
+  .count-label{font-size:.8rem;text-transform:uppercase;color:var(--accent-olive);}
+  .count-value{font-size:1.1rem;font-weight:500;}
 
-    /* HERO / PORTADA */
-    .hero-wrap {
-      min-height: 90vh;
-      padding: 3rem 1.5rem 4rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      background-color: var(--bg-paper);
-      position: relative;
-      overflow: hidden;
-    }
+  .parents-intro{font-family:var(--font-title);font-size:1.2rem;color:var(--accent-terracotta);margin-bottom:.75rem;font-weight:500;}
+  .parents-block{text-align:center;font-size:.95rem;line-height:1.6;}
 
-    /* textura papel / velos suaves en esquinas */
-    .hero-wrap::before,
-    .hero-wrap::after {
-      content: "";
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(60px);
-      opacity: .2;
-      background: radial-gradient(circle at 30% 30%, rgba(176,86,53,.35) 0%, rgba(247,244,239,0) 70%);
-    }
-    .hero-wrap::before {
-      width: 320px;
-      height: 320px;
-      top: -60px;
-      left: -60px;
-    }
-    .hero-wrap::after {
-      width: 360px;
-      height: 360px;
-      bottom: -80px;
-      right: -80px;
-      background: radial-gradient(circle at 30% 30%, rgba(108,113,92,.35) 0%, rgba(247,244,239,0) 70%);
-    }
-
-    /* CONTENEDOR FOTO PORTADA (opcional) */
-    .hero-photo {
-      width: 160px;
-      height: 200px;
-      border-radius: var(--radius-lg);
-      background-color: #ddd;
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      box-shadow: 0 24px 48px rgba(0,0,0,.15);
-      border: 2px solid #ffffffaa;
-      margin-bottom: 1.5rem;
-    }
-
-    /* >>> PARA AGREGAR SU FOTO DESPUÉS <<<
-       1. guarda tu foto como 'portada.jpg' junto al index.html
-       2. cambia aquí abajo:
-       background-image: url('portada.jpg');
-       (ahorita lo dejo vacío / sin imagen para que no marque error)
-    */
-    <div class="hero-photo has-image" style="background-image:url('eli&wilbert_savethedate57.jpg');">
-  </div>
-    }
-
-    .hero-intro {
-      font-family: var(--font-body);
-      font-size: .8rem;
-      font-weight: 400;
-      letter-spacing: .15em;
-      text-transform: uppercase;
-      color: var(--accent-terracotta);
-      margin-bottom: .75rem;
-    }
-
-    .hero-phrase {
-      font-family: var(--font-title);
-      font-size: clamp(1.3rem,2vw,1.6rem);
-      font-weight: 500;
-      color: var(--text-main);
-      line-height: 1.3;
-      margin-bottom: 1.5rem;
-      padding: 0 1rem;
-    }
-
-    .hero-names {
-      font-family: var(--font-title);
-      font-size: clamp(2rem,4vw,2.8rem);
-      font-weight: 500;
-      color: var(--text-main);
-      letter-spacing: .03em;
-      line-height: 1.2;
-    }
-    .amp {
-      color: var(--accent-terracotta);
-      font-weight: 400;
-    }
-
-    .hero-dateplace {
-      margin-top: .75rem;
-      font-size: .9rem;
-      font-weight: 400;
-      letter-spacing: .15em;
-      text-transform: uppercase;
-      color: var(--text-main);
-    }
-
-    .hero-cta {
-      margin-top: 2rem;
-    }
-
-    /* CONTADOR */
-    .countdown-box {
-      font-size: 1rem;
-      text-align: center;
-      font-weight: 500;
-      color: var(--text-main);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: .5rem;
-    }
-
-    .count-label {
-      font-size: .8rem;
-      font-weight: 400;
-      text-transform: uppercase;
-      letter-spacing: .15em;
-      color: var(--accent-olive);
-    }
-
-    .count-value {
-      font-size: 1.1rem;
-      font-weight: 500;
-    }
-
-    /* SECCION PADRES */
-    .parents-block {
-      font-size: .95rem;
-      line-height: 1.6;
-      text-align: center;
-    }
-
-    .parents-intro {
-      font-family: var(--font-title);
-      font-size: 1.2rem;
-      color: var(--accent-terracotta);
-      margin-bottom: .75rem;
-      font-weight: 500;
-      letter-spacing: .03em;
-    }
-
-    /* DRESS CODE BLOCK */
-    .dresscode-card {
-      background-color: rgba(108,113,92,.12); /* olivo traslúcido */
-      color: var(--text-main);
-      border-radius: var(--radius-lg);
-      padding: 1.5rem 1.25rem;
-      box-shadow: var(--shadow-card);
-      border: 1px solid rgba(108,113,92,.2);
-      margin-bottom: 1.5rem;
-      text-align: center;
-    }
-
-    .dress-title {
-      font-family: var(--font-title);
-      font-size: 1.4rem;
-      color: var(--accent-olive);
-      font-weight: 500;
-      margin-bottom: .75rem;
-      letter-spacing: .03em;
-    }
-
-    .dress-text {
-      font-size: .95rem;
-      line-height: 1.5;
-      color: var(--text-main);
-    }
-
-    footer {
-      text-align: center;
-      font-size: .8rem;
-      color: #6b5a52;
-      padding: 4rem 1rem 2rem;
-      line-height: 1.5;
-    }
-
+  .dresscode-card{
+    background-color:rgba(156,175,136,.12);
+    color:var(--text-main);
+    border-radius:var(--radius-lg);
+    padding:1.5rem 1.25rem;
+    box-shadow:var(--shadow-card);
+    border:1px solid rgba(156,175,136,.2);
+    text-align:center;
+  }
+  .dress-title{font-family:var(--font-title);font-size:1.4rem;color:var(--accent-olive);font-weight:500;margin-bottom:.75rem;}
+  .dress-text{font-size:.95rem;line-height:1.5;color:var(--text-main);}
+  footer{text-align:center;font-size:.8rem;color:#6b5a52;padding:4rem 1rem 2rem;line-height:1.5;}
   </style>
 </head>
+
 <body>
-
-  <!-- =======================
-       HERO / PORTADA
-  ======================== -->
   <header class="hero-wrap" id="inicio">
-    <!-- FOTO OPCIONAL (AGREGAS 'has-image' Y url ARRIBA) -->
     <div class="hero-photo has-image" style="background-image:url('eli&wilbert_savethedate57.jpg');"></div>
-    <div class="hero-intro">
-      Porque el amor merece ser celebrado. ¡Acompáñanos!
-    </div>
-
+    <div class="hero-intro">Porque el amor merece ser celebrado. ¡Acompáñanos!</div>
     <h1 class="hero-names">
-      Elizabeth Muñoz Bravo
-      <span class="amp">&amp;</span>
-      Wilbert Ismael Quintal Borromeo
+      Elizabeth Muñoz Bravo <span class="amp">&amp;</span> Wilbert Ismael Quintal Borromeo
     </h1>
-
-    <div class="hero-dateplace">
-      18 · Abril · 2026 · Mérida, Yucatán
-    </div>
-
-    <div class="hero-cta">
-      <a class="btn-pill" href="#detalles">Ver detalles</a>
-    </div>
+    <div class="hero-dateplace">18 · Abril · 2026 · Mérida, Yucatán</div>
+    <div class="hero-cta"><a class="btn-pill" href="#detalles">Ver detalles</a></div>
   </header>
 
-
-  <!-- =======================
-       PADRES
-  ======================== -->
   <section class="section" id="familia">
     <div class="card">
       <div class="parents-block">
         <div class="parents-intro">Con la bendición de nuestros padres</div>
-        <div class="info-row">
-          Elizabeth Bravo Soriano
-          <span class="amp">&amp;</span>
-          Luis Muñoz Gómez
-        </div>
-        <div class="info-row">
-          Marcela Borromeo Estrada 
-          <span class="amp">&amp;</span>
-          Wilbert Ismael Quintal Correa
-        </div>
+        <div class="info-row">Elizabeth Bravo Soriano <span class="amp">&amp;</span> Luis Muñoz Gómez</div>
+        <div class="info-row">Marcela Borromeo Estrada <span class="amp">&amp;</span> Wilbert Ismael Quintal Correa</div>
       </div>
     </div>
   </section>
 
-
-  <!-- =======================
-       NUESTRA HISTORIA
-  ======================== -->
   <section class="section" id="historia">
     <div class="card delay-1">
       <h2 class="section-title">Nuestra historia</h2>
@@ -434,107 +228,55 @@
         con amor, risas y sueños compartidos.
         Hoy queremos celebrar esta historia con las personas más importantes: ustedes.
       </p>
-      <!--
-      Si quieres personalizar este texto:
-      - Busca este bloque <p class="note"> y cámbialo con su historia:
-        "Nos conocimos en ..., desde ... supimos ..., etc."
-      -->
     </div>
   </section>
 
-
-  <!-- =======================
-       CUENTA REGRESIVA
-  ======================== -->
   <section class="section" id="contador">
     <div class="card delay-2">
       <h2 class="section-title">Faltan muy pocos días para nuestro gran día 💍</h2>
       <div class="countdown-box">
         <div class="count-label">Cuenta regresiva</div>
-        <div class="count-value" id="countdown">
-          Cargando contador...
-        </div>
+        <div class="count-value" id="countdown">Cargando contador...</div>
       </div>
     </div>
   </section>
 
-
-  <!-- =======================
-       DETALLES DEL EVENTO
-  ======================== -->
   <section class="section" id="detalles">
     <div class="grid-2">
-      <!-- CEREMONIA -->
       <div class="card delay-1">
         <div class="subsection-title">Ceremonia Religiosa</div>
-        <div class="info-row">
-          <span class="label">Lugar:</span><br/>
-          Parroquia Santa María de Guadalupe
-        </div>
-        <div class="info-row">
-          <span class="label">Horario:</span><br/>
-          8:00 p.m.
-        </div>
-        <div class="info-row">
-          <span class="label">Dirección / Mapa:</span><br/>
-          <a href="https://maps.app.goo.gl/qfkGmwTWpUa3tBHR6" target="_blank" rel="noopener noreferrer">
-            Ver en Google Maps
-          </a>
-        </div>
+        <div class="info-row"><span class="label">Lugar:</span><br/>Parroquia Santa María de Guadalupe</div>
+        <div class="info-row"><span class="label">Horario:</span><br/>8:00 p.m.</div>
+        <div class="info-row"><span class="label">Mapa:</span><br/><a href="https://maps.app.goo.gl/qfkGmwTWpUa3tBHR6" target="_blank">Ver en Google Maps</a></div>
       </div>
 
-      <!-- RECEPCIÓN -->
       <div class="card delay-2">
         <div class="subsection-title">Recepción</div>
-        <div class="info-row">
-          <span class="label">Lugar:</span><br/>
-          Casa Flor de María
-        </div>
-        <div class="info-row">
-          <span class="label">Después de la ceremonia</span>
-        </div>
-        <div class="info-row">
-          <span class="label">Dirección / Mapa:</span><br/>
-          <a href="https://maps.app.goo.gl/7gxKjTNx6DKzv7Hi7" target="_blank" rel="noopener noreferrer">
-            Ver en Google Maps
-          </a>
-        </div>
+        <div class="info-row"><span class="label">Lugar:</span><br/>Casa Flor de María</div>
+        <div class="info-row"><span class="label">Después de la ceremonia</span></div>
+        <div class="info-row"><span class="label">Mapa:</span><br/><a href="https://maps.app.goo.gl/7gxKjTNx6DKzv7Hi7" target="_blank">Ver en Google Maps</a></div>
       </div>
     </div>
 
-    <!-- ITINERARIO GENERAL (opcional, puedes ajustar horarios reales más adelante) -->
     <div class="card delay-3">
       <h2 class="section-title">Programa de la noche</h2>
       <ul class="program-list">
         <li>8:00 p.m. · Ceremonia religiosa</li>
-        <li>Despu&eacute;s · Recepción y bienvenida</li>
+        <li>Después · Recepción y bienvenida</li>
         <li>Brindis &amp; fotos</li>
         <li>Cena</li>
         <li>Baile ✨</li>
       </ul>
-      <!-- Ajusta los horarios reales cuando ya estén cerrados -->
     </div>
   </section>
 
-
-  <!-- =======================
-       DRESS CODE
-  ======================== -->
   <section class="section" id="dresscode">
     <div class="dresscode-card">
       <div class="dress-title">Código de vestimenta</div>
-      <div class="dress-text">
-        Formal elegante.<br/>
-        Vestido largo o traje de vestir.<br/>
-        Por favor evita mezclilla / jeans.
-      </div>
+      <div class="dress-text">Formal elegante.<br/>Vestido largo o traje de vestir.<br/>Por favor evita mezclilla / jeans.</div>
     </div>
   </section>
 
-
-  <!-- =======================
-       MESA DE REGALOS
-  ======================== -->
   <section class="section" id="regalos">
     <div class="card delay-1">
       <h2 class="section-title">Mesa de regalos</h2>
@@ -543,201 +285,108 @@
         Si deseas hacernos un detalle, puedes hacerlo a través de nuestra
         mesa en Liverpool (próximamente) o en efectivo.
       </p>
-      <!--
-      Cuando ya tengan el link de Liverpool:
-      Reemplaza "próximamente" por un enlace tipo:
-      <a href="https://liverpool.com.mx/tu-link" target="_blank">nuestra mesa en Liverpool</a>
-      -->
     </div>
   </section>
 
-
-  <!-- =======================
-       CONFIRMACIÓN / RSVP
-  ======================== -->
   <section class="section" id="rsvp">
     <div class="card delay-2">
       <h2 class="section-title">Confirma tu asistencia</h2>
       <p class="info-row">
-        Ayúdanos a organizar todo con tiempo ✨<br/>
-        Por favor confirma tu asistencia.
+        Ayúdanos a organizar todo con tiempo ✨<br/>Por favor confirma tu asistencia.
       </p>
-
       <div class="btn-group">
-        <!-- BOTÓN WHATSAPP -->
-        <a class="btn-pill"
-           href="https://wa.me/529381819128?text=Hola!%20Confirmo%20mi%20asistencia%20a%20la%20boda%20de%20Elizabeth%20y%20Wilbert%20🎉"
-           target="_blank" rel="noopener noreferrer">
-          Confirmar por WhatsApp
-        </a>
-
-        <!-- BOTÓN FORMULARIO (EDITABLE) -->
-        <a class="btn-pill btn-dark"
-           href="https://forms.gle/TU-FORM-AQUI"
-           target="_blank" rel="noopener noreferrer">
-          Llenar formulario
-        </a>
+        <a class="btn-pill" href="https://wa.me/529381819128?text=Hola!%20Confirmo%20mi%20asistencia%20a%20la%20boda%20de%20Elizabeth%20y%20Wilbert%20🎉" target="_blank">Confirmar por WhatsApp</a>
+        <a class="btn-pill btn-dark" href="https://forms.gle/TU-FORM-AQUI" target="_blank">Llenar formulario</a>
       </div>
-
-      <!--
-      Para usar Google Forms:
-      1. Ve a https://forms.google.com
-      2. Crea uno con: Nombre completo / ¿Asistirás? / ¿Cuántas personas? / Alergias o restricciones
-      3. Clic "Enviar" > ícono de enlace > copia el link largo
-      4. Reemplaza en el href de arriba TU-FORM-AQUI con ese link
-      -->
     </div>
   </section>
 
-
-  <!-- =======================
-       NOTAS IMPORTANTES
-  ======================== -->
   <section class="section" id="notas">
     <div class="card delay-3">
       <h2 class="section-title">Notas importantes</h2>
-      <p class="note">
-        Por favor, celebrémoslo entre adultos ✨<br/>
-        Agradecemos tu comprensión y cariño.
-      </p>
+      <p class="note">Por favor, celebrémoslo entre adultos ✨<br/>Agradecemos tu comprensión y cariño.</p>
     </div>
   </section>
 
+  <footer>Con todo nuestro cariño,<br/>nos encantará celebrar contigo 💛</footer>
 
-  <!-- =======================
-       AGRADECIMIENTO FINAL
-  ======================== -->
-  <footer>
-    Con todo nuestro cariño,<br/>
-    nos encantará celebrar contigo 💛
-  </footer>
-
-
-  <!-- =======================
-       SCRIPT: CONTADOR
-       (cuenta regresiva hacia 18 abril 2026, 20:00)
-  ======================== -->
   <script>
+    // CONTADOR
     (function(){
-      const countdownEl = document.getElementById('countdown');
-      // Año, Mes-1, Día, Hora, Min
-      // Abril = mes 3 porque en JS Enero=0
-      const weddingDate = new Date(2026, 3, 18, 20, 0, 0);
-
+      const countdownEl=document.getElementById('countdown');
+      const weddingDate=new Date(2026,3,18,20,0,0);
       function updateCountdown(){
-        const now = new Date();
-        const diffMs = weddingDate - now;
-
-        if (diffMs <= 0){
-          countdownEl.textContent = "¡Es hoy! 💍";
-          return;
-        }
-
-        const diffDays = Math.floor(diffMs / (1000*60*60*24));
-        const diffHrs  = Math.floor((diffMs / (1000*60*60)) % 24);
-        const diffMin  = Math.floor((diffMs / (1000*60)) % 60);
-
-        countdownEl.textContent =
-          diffDays + " días · " +
-          diffHrs + " hrs · " +
-          diffMin + " min";
+        const now=new Date(),diff=weddingDate-now;
+        if(diff<=0){countdownEl.textContent="¡Es hoy! 💍";return;}
+        const d=Math.floor(diff/86400000),
+              h=Math.floor(diff/3600000)%24,
+              m=Math.floor(diff/60000)%60;
+        countdownEl.textContent=`${d} días · ${h} hrs · ${m} min`;
       }
-
-      updateCountdown();
-      setInterval(updateCountdown, 60000);
+      updateCountdown();setInterval(updateCountdown,60000);
     })();
   </script>
-  
-<!-- MÚSICA DE FONDO -->
-<audio id="bg-music" src="musica.mp3" loop></audio>
 
-<!-- BOTÓN MUSICAL REDONDO CON ICONOS DORADOS METÁLICOS -->
-<button id="musicBtn"
-  style="position:fixed;bottom:20px;right:20px;width:60px;height:60px;
-  background-color:#9E4624;border:none;border-radius:50%;
-  cursor:pointer;box-shadow:0 4px 10px rgba(0,0,0,.25);
-  z-index:999;display:flex;align-items:center;justify-content:center;
-  transition:background-color .3s, transform .2s;">
-  <!-- Definición del degradado dorado -->
-  <svg width="0" height="0">
-    <defs>
-      <linearGradient id="gold-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stop-color="#F9E79F"/>
-        <stop offset="50%" stop-color="#D4AF37"/>
-        <stop offset="100%" stop-color="#B8860B"/>
-      </linearGradient>
-    </defs>
-  </svg>
+  <!-- BOTÓN MUSICAL -->
+  <audio id="bg-music" src="musica.mp3" loop></audio>
+  <button id="musicBtn" style="position:fixed;bottom:20px;right:20px;width:60px;height:60px;
+    background-color:#9E4624;border:none;border-radius:50%;cursor:pointer;
+    box-shadow:0 4px 10px rgba(0,0,0,.25);z-index:999;display:flex;
+    align-items:center;justify-content:center;transition:background-color .3s,transform .2s;">
+    <svg width="0" height="0">
+      <defs>
+        <linearGradient id="gold-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#F9E79F"/>
+          <stop offset="50%" stop-color="#E0C873"/>
+          <stop offset="100%" stop-color="#B8860B"/>
+        </linearGradient>
+      </defs>
+    </svg>
+    <svg id="icon-music" xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="url(#gold-gradient)" viewBox="0 0 24 24"><path d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6z"/></svg>
+    <svg id="icon-mute" xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="url(#gold-gradient)" viewBox="0 0 24 24" style="display:none;"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v8.06A4.98 4.98 0 0 0 16.5 12zm3.5 0c0 3.31-2.69 6-6 6-.66 0-1.29-.11-1.88-.31l1.49-1.49c.13-.13.21-.3.21-.49v-8.42c0-.19-.08-.36-.21-.49l-1.49-1.49c.59-.2 1.22-.31 1.88-.31 3.31 0 6 2.69 6 6zm-15.73.73L3.27 18h2l2.99-4H11v-2H8.26l2.99-4h2l.69-.69L4.77 5.23 3.5 6.5 4.77 7.77 6.5 9.5v5L4.77 16.23z"/></svg>
+  </button>
 
-  <!-- ÍCONO NOTA MUSICAL -->
-  <svg id="icon-music" xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="url(#gold-gradient)" viewBox="0 0 24 24">
-    <path d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6z"/>
-  </svg>
+  <style>
+    #musicBtn::after{content:"";position:absolute;border-radius:50%;width:100%;height:100%;top:0;left:0;
+      box-shadow:0 0 0 0 rgba(158,70,36,0.4);opacity:0;transition:box-shadow .6s ease-out,opacity .6s ease-out;z-index:-1;}
+    #musicBtn.playing::after{box-shadow:0 0 0 12px rgba(158,70,36,0);opacity:1;}
+  </style>
 
-  <!-- ÍCONO ALTAVOZ / MUTE -->
-  <svg id="icon-mute" xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="url(#gold-gradient)" viewBox="0 0 24 24" style="display:none;">
-    <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v8.06A4.98 4.98 0 0 0 16.5 12zm3.5 0c0 3.31-2.69 6-6 6-.66 0-1.29-.11-1.88-.31l1.49-1.49c.13-.13.21-.3.21-.49v-8.42c0-.19-.08-.36-.21-.49l-1.49-1.49c.59-.2 1.22-.31 1.88-.31 3.31 0 6 2.69 6 6zm-15.73.73L3.27 18h2l2.99-4H11v-2H8.26l2.99-4h2l.69-.69L4.77 5.23 3.5 6.5 4.77 7.77 6.5 9.5v5L4.77 16.23z"/>
-  </svg>
-</button>
+  <script>
+    const musicBtn=document.getElementById('musicBtn'),
+          audio=document.getElementById('bg-music'),
+          iconMusic=document.getElementById('icon-music'),
+          iconMute=document.getElementById('icon-mute');
+    let isPlaying=false;
+    function playMusic(){
+      audio.play();
+      musicBtn.style.backgroundColor="#9CAF88";
+      iconMusic.style.display="none";
+      iconMute.style.display="block";
+      musicBtn.classList.add("playing");
+      isPlaying=true;
+    }
+    function pauseMusic(){
+      audio.pause();
+      musicBtn.style.backgroundColor="#9E4624";
+      iconMusic.style.display="block";
+      iconMute.style.display="none";
+      musicBtn.classList.remove("playing");
+      isPlaying=false;
+    }
+    musicBtn.addEventListener('click',()=>{
+      if(!isPlaying)playMusic();else pauseMusic();
+      musicBtn.style.transform="scale(0.9)";
+      setTimeout(()=>musicBtn.style.transform="scale(1)",150);
+    });
+  </script>
 
-<style>
-  /* Efecto pulse elegante */
-  #musicBtn::after {
-    content: "";
-    position: absolute;
-    border-radius: 50%;
-    width: 100%;
-    height: 100%;
-    top: 0; left: 0;
-    box-shadow: 0 0 0 0 rgba(158,70,36,0.4); /* terracota translúcido */
-    opacity: 0;
-    transition: box-shadow 0.6s ease-out, opacity 0.6s ease-out;
-    z-index: -1;
-  }
-  #musicBtn.playing::after {
-    box-shadow: 0 0 0 12px rgba(158,70,36,0);
-    opacity: 1;
-  }
-</style>
-
-<script>
-  const musicBtn = document.getElementById('musicBtn');
-  const audio = document.getElementById('bg-music');
-  const iconMusic = document.getElementById('icon-music');
-  const iconMute = document.getElementById('icon-mute');
-  let isPlaying = false;
-
-  function playMusic() {
-    audio.play();
-    musicBtn.style.backgroundColor = "#9CAF88"; // verde olivo
-    iconMusic.style.display = "none";
-    iconMute.style.display = "block";
-    musicBtn.classList.add("playing");
-    isPlaying = true;
-  }
-
-  function pauseMusic() {
-    audio.pause();
-    musicBtn.style.backgroundColor = "#9E4624"; // terracota
-    iconMusic.style.display = "block";
-    iconMute.style.display = "none";
-    musicBtn.classList.remove("playing");
-    isPlaying = false;
-  }
-
-  musicBtn.addEventListener('click', () => {
-    if (!isPlaying) playMusic();
-    else pauseMusic();
-    musicBtn.style.transform = "scale(0.9)";
-    setTimeout(() => (musicBtn.style.transform = "scale(1)"), 150);
-  });
-</script>
-  
+  <script>
+    if('scrollRestoration' in history){history.scrollRestoration='manual';}
+    window.addEventListener('load',()=>window.scrollTo({top:0,left:0,behavior:'smooth'}));
+  </script>
 </body>
 </html>
-
-
-
 
 
 
