@@ -142,15 +142,25 @@
   @media(min-width:700px){.grid-2{grid-template-columns:1fr 1fr;}}
 
   /* HERO */
-  .hero-wrap {
-    min-height: 90vh;
-    padding: 3rem 1.5rem 4rem;
-    display: flex; flex-direction: column;
-    align-items: center; justify-content: center;
-    text-align: center;
-    background-color: var(--bg-paper);
-    position: relative; overflow: hidden;
-  }
+ .hero-wrap {
+  min-height: 100vh;
+  padding: 3rem 1.5rem 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-image: linear-gradient(
+      rgba(247, 244, 239, 0.88),
+      rgba(247, 244, 239, 0.88)
+    ),
+    url('eli&wilbert_savethedate57.jpg'); /* aquí pones el nombre de tu imagen */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  overflow: hidden;
+}
 
   .hero-wrap::before,
   .hero-wrap::after {
