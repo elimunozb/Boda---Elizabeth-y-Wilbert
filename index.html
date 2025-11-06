@@ -244,6 +244,60 @@
   border-radius: 1rem;
   box-shadow: 0 8px 24px rgba(0,0,0,0.08);
 }
+
+/* 💫 BIENVENIDA INICIAL */
+#welcome-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(247, 244, 239, 0.96); /* tono papel artesanal */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  z-index: 2000;
+  transition: opacity 1s ease;
+}
+
+.welcome-box {
+  text-align: center;
+  background: #fffefc;
+  padding: 2rem 2.5rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.1);
+  max-width: 320px;
+  animation: fadeUp 1s ease both;
+}
+
+.welcome-box h2 {
+  font-family: 'Allura', cursive;
+  font-size: 2.2rem;
+  color: var(--text-main);
+  margin-bottom: .5rem;
+}
+
+.welcome-box p {
+  font-family: 'Century Gothic', sans-serif;
+  color: var(--text-main);
+  font-size: .95rem;
+  margin-bottom: 1.5rem;
+}
+
+#welcome-overlay button {
+  background-color: var(--accent-terracotta);
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  padding: .8rem 1.8rem;
+  font-family: 'Century Gothic', sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color .3s, transform .2s;
+}
+
+#welcome-overlay button:hover {
+  background-color: var(--accent-olive);
+  transform: scale(0.97);
+}
   
   </style>
 
@@ -466,6 +520,27 @@
     if('scrollRestoration' in history){history.scrollRestoration='manual';}
     window.addEventListener('load',()=>window.scrollTo({top:0,left:0,behavior:'smooth'}));
   </script>
+  <!-- ✨ BIENVENIDA INICIAL -->
+<div id="welcome-overlay">
+  <div class="welcome-box">
+    <h2>¡Bienvenidos!</h2>
+    <p>Gracias por acompañarnos en este momento tan especial 💍</p>
+    <button id="enter-btn">Entrar</button>
+  </div>
+</div>
+
+<script>
+  const overlay = document.getElementById('welcome-overlay');
+  const enterBtn = document.getElementById('enter-btn');
+
+  enterBtn.addEventListener('click', () => {
+    overlay.style.opacity = '0';
+    setTimeout(() => {
+      overlay.style.display = 'none';
+    }, 1000); // 1 segundo para desvanecer
+  });
+</script>
+  
 </body>
 </html>
 
