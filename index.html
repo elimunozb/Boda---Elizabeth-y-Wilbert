@@ -304,6 +304,14 @@
 </head>
 
 <body>
+  <div id="welcome-overlay">
+  <div class="welcome-box">
+    <h2 id="welcome-title">¡Bienvenidos!</h2>
+    <p id="welcome-text">Gracias por acompañarnos en este momento tan especial 💍</p>
+    <button id="enter-btn">Entrar</button>
+  </div>
+</div>
+
   <header class="hero-wrap" id="inicio">
     <!--<div class="hero-photo has-image" style="background-image:url('eli&wilbert_savethedate57.jpg');"></div> -->
     <div class="hero-intro">Porque el amor merece ser celebrado. ¡Acompáñanos!</div>
@@ -520,6 +528,8 @@
     if('scrollRestoration' in history){history.scrollRestoration='manual';}
     window.addEventListener('load',()=>window.scrollTo({top:0,left:0,behavior:'smooth'}));
   </script>
+  
+  
   <!-- ✨ BIENVENIDA INICIAL personalizada -->
 <script>
   const overlay = document.getElementById('welcome-overlay');
