@@ -520,24 +520,39 @@
     if('scrollRestoration' in history){history.scrollRestoration='manual';}
     window.addEventListener('load',()=>window.scrollTo({top:0,left:0,behavior:'smooth'}));
   </script>
-  <!-- ✨ BIENVENIDA INICIAL -->
-<div id="welcome-overlay">
-  <div class="welcome-box">
-    <h2>¡Bienvenidos!</h2>
-    <p>Gracias por acompañarnos en este momento tan especial 💍</p>
-    <button id="enter-btn">Entrar</button>
-  </div>
-</div>
-
+  <!-- ✨ BIENVENIDA INICIAL personalizada -->
 <script>
   const overlay = document.getElementById('welcome-overlay');
   const enterBtn = document.getElementById('enter-btn');
+  const title = document.getElementById('welcome-title');
+  const text = document.getElementById('welcome-text');
 
+  // Detectar nombre del invitado desde la URL
+  const params = new URLSearchParams(window.location.search);
+  const invitado = params.get('invitado');
+
+  if (invitado) {
+    const nombreLimpio = invitado.trim();
+
+    // Detectar plural o femenino
+    const esPlural = /y|,|familia|amigos/i.test(nombreLimpio);
+    const esFemenino = /a$/.test(nombreLimpio.split(" ")[0]); // si termina en "a"
+
+    let saludo = "¡Bienvenidos";
+    if (!esPlural) {
+      saludo = esFemenino ? "¡Bienvenida" : "¡Bienvenido";
+    }
+
+    title.textContent = `${saludo}, ${nombreLimpio}!`;
+    text.textContent = `Nos alegra mucho que ${esPlural ? 'estén' : 'estés'} aquí para celebrar con nosotros 💍`;
+  }
+
+  // Animación al presionar Entrar
   enterBtn.addEventListener('click', () => {
     overlay.style.opacity = '0';
     setTimeout(() => {
       overlay.style.display = 'none';
-    }, 1000); // 1 segundo para desvanecer
+    }, 1000);
   });
 </script>
   
