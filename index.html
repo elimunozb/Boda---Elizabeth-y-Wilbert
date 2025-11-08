@@ -588,10 +588,10 @@
     });
   </script>
 
-  <!-- <script>
+  <script>
     if('scrollRestoration' in history){history.scrollRestoration='manual';}
     window.addEventListener('load',()=>window.scrollTo({top:0,left:0,behavior:'smooth'}));
-  </script>-->
+  </script>
   
   
   <!-- ✨ BIENVENIDA INICIAL personalizada -->
@@ -600,17 +600,17 @@
   const enterBtn = document.getElementById('enter-btn');
   const title = document.getElementById('welcome-title');
   const text = document.getElementById('welcome-text');
-  const audio = document.getElementById('bg-music'); // tu música existente
 
-  // Detectar nombre del invitado en la URL
+  // Detectar nombre del invitado desde la URL
   const params = new URLSearchParams(window.location.search);
   const invitado = params.get('invitado');
 
-  // Personalización del mensaje
   if (invitado) {
     const nombreLimpio = invitado.trim();
+
+    // Detectar plural o femenino
     const esPlural = /y|,|familia|amigos/i.test(nombreLimpio);
-    const esFemenino = /a$/.test(nombreLimpio.split(" ")[0]);
+    const esFemenino = /a$/.test(nombreLimpio.split(" ")[0]); // si termina en "a"
 
     let saludo = "¡Bienvenidos";
     if (!esPlural) {
@@ -621,47 +621,17 @@
     text.textContent = `Nos alegra mucho que ${esPlural ? 'estén' : 'estés'} aquí para celebrar con nosotros 💍`;
   }
 
-  // Animación y reproducción segura de música al entrar
-  enterBtn.addEventListener('click', async () => {
-    overlay.style.transition = 'opacity 1s ease';
+  // Animación al presionar Entrar
+  enterBtn.addEventListener('click', () => {
     overlay.style.opacity = '0';
     setTimeout(() => {
       overlay.style.display = 'none';
     }, 1000);
-
-    // 🔊 reproducir música después de cerrar la bienvenida
-    try {
-      await audio.play();
-    } catch (e) {
-      console.log('El navegador bloqueó la reproducción automática.');
-    }
-  });
-
-  // Asegurar que la página empiece desde arriba
-  window.addEventListener('load', () => {
-    if ('scrollRestoration' in history) {
-      history.scrollRestoration = 'manual';
-    }
-    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
   });
 </script>
-
   
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
