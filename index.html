@@ -627,11 +627,18 @@
     setTimeout(() => {
       overlay.style.display = 'none';
     }, 1000);
+    
+  // 🔊 inicia la música después de medio segundo
+  setTimeout(() => {
+    const audio = document.getElementById('bg-music');
+    audio.play().catch(() => {});
+  }, 600);
   });
 </script>
   
 </body>
 </html>
+
 
 
 
