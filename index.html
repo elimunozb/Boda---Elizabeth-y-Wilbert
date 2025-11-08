@@ -452,8 +452,8 @@
 
       <div class="card delay-2">
         <div class="subsection-title">Recepción</div>
+        <img src="flor_de_maria.jpg" alt="Casa Flor de María" class="place-photo"> 
         <div class="info-row"><span class="label">Lugar:</span><br/>Casa Flor de María</div>
-        <img src="flor_de_maria.jpg" alt="Casa Flor de María" class="place-photo">
         <div class="info-row"><span class="label">Después de la ceremonia</span></div>
         <div class="info-row"><span class="label">Mapa:</span><br/><a href="https://maps.app.goo.gl/7gxKjTNx6DKzv7Hi7" target="_blank">Ver en Google Maps</a></div>
       </div>
@@ -600,6 +600,7 @@
   const enterBtn = document.getElementById('enter-btn');
   const title = document.getElementById('welcome-title');
   const text = document.getElementById('welcome-text');
+  const audio = document.getElementById('bg-music'); // 👈 tu música ya existente
 
   // Detectar nombre del invitado desde la URL
   const params = new URLSearchParams(window.location.search);
@@ -621,17 +622,21 @@
     text.textContent = `Nos alegra mucho que ${esPlural ? 'estén' : 'estés'} aquí para celebrar con nosotros 💍`;
   }
 
-  // Animación al presionar Entrar
+  // 💫 cuando presionan “Entrar”, empieza la música
   enterBtn.addEventListener('click', () => {
     overlay.style.opacity = '0';
     setTimeout(() => {
       overlay.style.display = 'none';
     }, 1000);
+    setTimeout(() => {
+      audio.play(); // 👈 inicia la música automáticamente
+    }, 500);
   });
 </script>
   
 </body>
 </html>
+
 
 
 
