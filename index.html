@@ -298,11 +298,12 @@
   background-color: var(--accent-olive);
   transform: scale(0.97);
 }
-  /* 🌸 GALERÍA DE FOTOS */
+
+/* 💍 GALERÍA EN DOS COLUMNAS */
 .photo-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(2, 1fr); /* dos columnas fijas */
+  gap: 1.2rem; /* espacio entre fotos */
   justify-items: center;
   align-items: center;
   margin-top: 1.5rem;
@@ -310,18 +311,25 @@
 
 .photo-grid img {
   width: 100%;
-  max-width: 320px;
-  border-radius: 1rem;
-  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+  border-radius: 1.2rem;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
   transition: transform .3s ease, box-shadow .3s ease;
   cursor: pointer;
 }
 
-/* Efecto sutil al pasar el cursor */
+/* efecto hover elegante */
 .photo-grid img:hover {
   transform: scale(1.03);
   box-shadow: 0 12px 24px rgba(0,0,0,0.18);
 }
+
+/* 📱 vista móvil: solo una columna */
+@media (max-width: 600px) {
+  .photo-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 
   </style>
 
@@ -608,6 +616,7 @@
   
 </body>
 </html>
+
 
 
 
