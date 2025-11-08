@@ -298,7 +298,31 @@
   background-color: var(--accent-olive);
   transform: scale(0.97);
 }
-  
+  /* 🌸 GALERÍA DE FOTOS */
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  justify-items: center;
+  align-items: center;
+  margin-top: 1.5rem;
+}
+
+.photo-grid img {
+  width: 100%;
+  max-width: 320px;
+  border-radius: 1rem;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+  transition: transform .3s ease, box-shadow .3s ease;
+  cursor: pointer;
+}
+
+/* Efecto sutil al pasar el cursor */
+.photo-grid img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.18);
+}
+
   </style>
 
 </head>
@@ -361,6 +385,22 @@
       </p>
     </div>
   </section>
+  
+<section class="section" id="galeria">
+  <div class="card">
+    <h2 class="section-title">Desde que éramos amigos...</h2>
+    <div class="photo-grid">
+      <img src="Foto 1.jpg" alt="Elizabeth y Wilbert - amigos">
+      <img src="Foto 2.jpg" alt="Elizabeth y Wilbert - amigos">
+      <img src="Foto 3.jpg" alt="Elizabeth y Wilbert - amigos">
+      <img src="Foto 4.jpg" alt="Elizabeth y Wilbert - amigos">
+      <img src="Foto 5.jpg" alt="Primer viaje juntos - Guanajuato">
+      <img src="Foto 6.jpg" alt="Recuerdo muy especial">
+      <img src="Foto 7.jpg" alt="Primer aniversario">
+      <img src="Foto 8.jpg" alt="Hoy y siempre">
+    </div>
+  </div>
+</section>
 
 <section class="section">
   <div class="card" style="padding:0;">
@@ -568,6 +608,7 @@
   
 </body>
 </html>
+
 
 
 
