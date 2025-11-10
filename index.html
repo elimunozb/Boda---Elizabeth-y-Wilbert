@@ -559,34 +559,46 @@
     #musicBtn.playing::after{box-shadow:0 0 0 12px rgba(158,70,36,0);opacity:1;}
   </style>
 
-  <script>
-    const musicBtn=document.getElementById('musicBtn'),
-          audio=document.getElementById('bg-music'),
-          iconMusic=document.getElementById('icon-music'),
-          iconMute=document.getElementById('icon-mute');
-    let isPlaying=false;
-    function playMusic(){
-      audio.play();
-      musicBtn.style.backgroundColor="#9CAF88";
-      iconMusic.style.display="none";
-      iconMute.style.display="block";
-      musicBtn.classList.add("playing");
-      isPlaying=true;
-    }
-    function pauseMusic(){
-      audio.pause();
-      musicBtn.style.backgroundColor="#9E4624";
-      iconMusic.style.display="block";
-      iconMute.style.display="none";
-      musicBtn.classList.remove("playing");
-      isPlaying=false;
-    }
-    musicBtn.addEventListener('click',()=>{
-      if(!isPlaying)playMusic();else pauseMusic();
-      musicBtn.style.transform="scale(0.9)";
-      setTimeout(()=>musicBtn.style.transform="scale(1)",150);
-    });
-  </script>
+<script>
+  const musicBtn = document.getElementById('musicBtn');
+  const audio = document.getElementById('bg-music');
+  const iconMusic = document.getElementById('icon-music');
+  const iconMute = document.getElementById('icon-mute');
+  let isPlaying = false;
+
+  // 🎵 Función para reproducir
+  function playMusic() {
+    audio.play();
+    musicBtn.style.backgroundColor = "#9CAF88"; // verde olivo
+    iconMusic.style.display = "none";
+    iconMute.style.display = "block";
+    isPlaying = true;
+  }
+
+  // 🔇 Función para pausar
+  function pauseMusic() {
+    audio.pause();
+    musicBtn.style.backgroundColor = "#9E4624"; // terracota
+    iconMusic.style.display = "block";
+    iconMute.style.display = "none";
+    isPlaying = false;
+  }
+
+  // 💫 Reproducir automáticamente al presionar "Entrar"
+  document.getElementById('enter-btn').addEventListener('click', () => {
+    setTimeout(() => {
+      playMusic(); // inicia música y pone botón verde con nota tachada
+    }, 600);
+  });
+
+  // 👆 Control manual del botón
+  musicBtn.addEventListener('click', () => {
+    if (isPlaying) pauseMusic();
+    else playMusic();
+    musicBtn.style.transform = "scale(0.9)";
+    setTimeout(() => (musicBtn.style.transform = "scale(1)"), 150);
+  });
+</script>
 
   <script>
     if('scrollRestoration' in history){history.scrollRestoration='manual';}
@@ -638,6 +650,7 @@
   
 </body>
 </html>
+
 
 
 
