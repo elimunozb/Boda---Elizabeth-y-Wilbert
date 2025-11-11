@@ -353,6 +353,22 @@
   display: block;
   box-shadow: 0 6px 14px rgba(0,0,0,.12);
 }
+    /* el estilo para la validación */
+#validacion {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: all 0.9s cubic-bezier(.16,.84,.44,1);
+}
+#validacion.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+#validacion-card {
+  background-color: rgba(156, 175, 136, 0.1);
+  border: 1px solid rgba(156, 175, 136, 0.3);
+  text-align: center;
+  font-size: 0.95rem;
+}
 
   </style>
 
@@ -620,53 +636,57 @@
   </script>
   
   
-  <!-- ✨ BIENVENIDA INICIAL personalizada -->
+<!-- ✨ BIENVENIDA INICIAL personalizada -->
 <script>
   const overlay = document.getElementById('welcome-overlay');
   const enterBtn = document.getElementById('enter-btn');
   const title = document.getElementById('welcome-title');
   const text = document.getElementById('welcome-text');
 
-  // Detectar nombre del invitado desde la URL
+  // Detectar nombre y número de personas desde la URL
   const params = new URLSearchParams(window.location.search);
   const invitado = params.get('invitado');
+  const personas = params.get('personas'); // 👈 nuevo parámetro
 
- if (invitado) {
-  const nombreLimpio = invitado.trim();
-  const nombreMinus = nombreLimpio.toLowerCase();
+  if (invitado) {
+    const nombreLimpio = invitado.trim();
+    const nombreMinus = nombreLimpio.toLowerCase();
 
-  // lista de nombres femeninos comunes (puedes añadir más si quieres)
-  const nombresFemeninos = [
-    "ana","sofia","maria","laura","elizabeth","elisabeth","eli","andrea","paula",
-    "carmen","isabel","fernanda","valeria","mariana","natalia","daniela",
-    "alejandra","guadalupe","luz","monica","patricia","gabriela","marisol",
-    "beatriz","leticia","veronica","adriana","carla","silvia","Jenny", "selene"
-  ];
+    // lista de nombres femeninos comunes 🇲🇽
+    const nombresFemeninos = [
+      "ana","sofia","maria","laura","elizabeth","elisabeth","eli","andrea","paula",
+      "carmen","isabel","fernanda","valeria","mariana","natalia","daniela",
+      "alejandra","guadalupe","luz","monica","patricia","gabriela","marisol",
+      "beatriz","leticia","veronica","adriana","carla","silvia","jenny","selene"
+    ];
 
-  // detecta si hay plural (familia, amigos, nombres unidos por “y” o coma)
-  const esPlural = /y|,|familia|amigos/i.test(nombreLimpio);
-  const esFemenino = nombresFemeninos.some(n => nombreMinus.includes(n));
+    const esPlural = /y|,|familia|amigos/i.test(nombreLimpio);
+    const esFemenino = nombresFemeninos.some(n => nombreMinus.includes(n));
 
-  let tituloSaludo = "";
-  let textoSaludo = "";
+    let tituloSaludo = "";
+    let textoSaludo = "";
 
-  if (esPlural) {
-    tituloSaludo = `¡Bienvenidos, ${nombreLimpio}!`;
-    textoSaludo = `Nos alegra mucho que estén aquí para celebrar con nosotros 💍`;
-  } 
-  else if (esFemenino) {
-    tituloSaludo = `¡Bienvenida, ${nombreLimpio}!`;
-    textoSaludo = `Nos alegra mucho que estés aquí para compartir este día tan especial 💛`;
-  } 
-  else {
-    // saludo neutro elegante si no se puede determinar
-    tituloSaludo = `¡Hola, ${nombreLimpio}!`;
-    textoSaludo = `Qué alegría tenerte aquí para celebrar con nosotros 💍`;
+    if (esPlural) {
+      tituloSaludo = `¡Bienvenidos, ${nombreLimpio}!`;
+      textoSaludo = `Nos alegra mucho que estén aquí para celebrar con nosotros 💍`;
+    } 
+    else if (esFemenino) {
+      tituloSaludo = `¡Bienvenida, ${nombreLimpio}!`;
+      textoSaludo = `Nos alegra mucho que estés aquí para compartir este día tan especial 💛`;
+    } 
+    else {
+      tituloSaludo = `¡Hola, ${nombreLimpio}!`;
+      textoSaludo = `Qué alegría tenerte aquí para celebrar con nosotros 💍`;
+    }
+
+    // Agregar número de personas si está definido
+    if (personas) {
+      textoSaludo += `<br><br>Esta invitación es válida para <strong>${personas} ${personas === "1" ? "persona" : "personas"}</strong> 💌`;
+    }
+
+    title.textContent = tituloSaludo;
+    text.innerHTML = textoSaludo;
   }
-
-  title.textContent = tituloSaludo;
-  text.textContent = textoSaludo;
-}
 
   // Animación al presionar Entrar
   enterBtn.addEventListener('click', () => {
@@ -674,14 +694,55 @@
     setTimeout(() => {
       overlay.style.display = 'none';
     }, 1000);
-    
-  // 🔊 inicia la música después de medio segundo
-  setTimeout(() => {
-    const audio = document.getElementById('bg-music');
-    audio.play().catch(() => {});
-  }, 600);
+
+    // 🔊 inicia la música después de medio segundo
+    setTimeout(() => {
+      const audio = document.getElementById('bg-music');
+      audio.play().catch(() => {});
+    }, 600);
   });
 </script>
   
+<!-- =======================
+     VALIDACIÓN DE INVITACIÓN (al final)
+======================= -->
+<section class="section" id="validacion" style="display:none;">
+  <div class="card delay-4" id="validacion-card">
+    <h2 class="section-title">Invitación personal</h2>
+    <p class="note" id="mensaje-validacion"></p>
+  </div>
+</section>
+
+<script>
+  const mensajeValidacion = document.getElementById("mensaje-validacion");
+  const seccionValidacion = document.getElementById("validacion");
+
+  if (invitado && personas) {
+    let textoValidacion = "";
+
+    if (/y|,|familia|amigos/i.test(invitado)) {
+      textoValidacion = `Esta invitación para <strong>${invitado}</strong> es válida para <strong>${personas} ${personas === "1" ? "persona" : "personas"}</strong>.`;
+    } else {
+      textoValidacion = `Invitación válida para <strong>${personas} ${personas === "1" ? "persona" : "personas"}</strong>.`;
+    }
+
+    mensajeValidacion.innerHTML = textoValidacion + " 💌";
+    seccionValidacion.style.display = "block";
+
+    // Efecto suave al hacer scroll
+    window.addEventListener('scroll', () => {
+      const rect = seccionValidacion.getBoundingClientRect();
+      if (rect.top < window.innerHeight * 0.85) {
+        seccionValidacion.classList.add('visible');
+      }
+    });
+
+    // Dispara animación si ya está visible
+    window.dispatchEvent(new Event('scroll'));
+  }
+</script>
+
+  
 </body>
 </html>
+
