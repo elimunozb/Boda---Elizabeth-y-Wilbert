@@ -526,8 +526,8 @@
         Ayúdanos a organizar todo con tiempo ✨<br/>Por favor confirma tu asistencia.
       </p>
       <div class="btn-group">
-       <a id="whatsapp-link" class="btn-pill" href="#" target="_blank" style="display:none;">
-        Confirmar por WhatsApp 💬
+        <a id="whatsapp-link" class="btn-pill" href="#" target="_blank" style="display:none;">
+         Confirmar por WhatsApp 💬
         </a>
       <!--<a class="btn-pill btn-dark" href="https://forms.gle/TU-FORM-AQUI" target="_blank">Llenar formulario</a> -->
       </div>
@@ -659,7 +659,7 @@
       "ana","sofia","maria","laura","elizabeth","elisabeth","eli","andrea","paula",
       "carmen","isabel","fernanda","valeria","mariana","natalia","daniela",
       "alejandra","guadalupe","luz","monica","patricia","gabriela","marisol",
-      "beatriz","leticia","veronica","adriana","carla","silvia","jenny","selene"
+      "beatriz","leticia","veronica","adriana","carla","silvia","Jenny","selene"
     ];
 
     const esPlural = /y|,|familia|amigos/i.test(nombreLimpio);
@@ -744,38 +744,40 @@
   }
 </script>
 <script>
-  // === PERSONALIZAR MENSAJE DE WHATSAPP ===
+ <script>
+  // === BOTÓN DE WHATSAPP PERSONALIZADO ===
   const enlaceWhatsapp = document.getElementById("whatsapp-link");
   const numeroWhatsapp = "529991264032"; // 💛 tu número de confirmación
+
+  // 👇 usamos la misma variable "invitado" que ya declaraste arriba
   const params = new URLSearchParams(window.location.search);
   const invitadoWA = params.get("invitado");
   const personasWA = params.get("personas");
 
   if (invitadoWA) {
-    // Limpia el nombre por si hay símbolos raros
     const nombreLimpio = decodeURIComponent(invitadoWA.trim().replace(/\+/g, " "));
     let mensaje = "";
 
-    // Si hay número de personas, lo agrega al texto
     if (personasWA) {
       const plural = personasWA === "1" ? "persona" : "personas";
-      mensaje = `¡Hola! Somos ${nombreLimpio} y confirmo nuestra asistencia (${personasWA} ${plural}) a la boda de Elizabeth y Wilbert 💛`;
+      mensaje = `¡Hola! Soy ${nombreLimpio} y confirmo nuestra asistencia (${personasWA} ${plural}) a la boda de Elizabeth y Wilbert 💛`;
     } else {
       mensaje = `¡Hola! Soy ${nombreLimpio} y confirmo mi asistencia a la boda de Elizabeth y Wilbert 💍`;
     }
 
-    // Codifica el mensaje para WhatsApp
     const mensajeCodificado = encodeURIComponent(mensaje);
-
-    // Asigna el enlace completo
     enlaceWhatsapp.href = `https://wa.me/${numeroWhatsapp}?text=${mensajeCodificado}`;
-    enlaceWhatsapp.style.display = "inline-block"; // muestra el botón solo si hay nombre
+    enlaceWhatsapp.style.display = "inline-block"; // 🔥 mostrar botón
+  } else {
+    console.log("⚠️ No se detectó invitado, botón oculto");
   }
 </script>
+
 
   
 </body>
 </html>
+
 
 
 
