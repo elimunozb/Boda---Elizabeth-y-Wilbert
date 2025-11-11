@@ -526,8 +526,8 @@
         Ayúdanos a organizar todo con tiempo ✨<br/>Por favor confirma tu asistencia.
       </p>
       <div class="btn-group">
-        <a id="whatsapp-link" class="btn-pill" href="#" target="_blank" style="display:none;">
-         Confirmar por WhatsApp 💬
+       <a id="whatsapp-link" class="btn-pill" href="#" target="_blank" style="display:none;">
+        Confirmar por WhatsApp 💬
         </a>
       <!--<a class="btn-pill btn-dark" href="https://forms.gle/TU-FORM-AQUI" target="_blank">Llenar formulario</a> -->
       </div>
@@ -716,48 +716,21 @@
 </section>
 
 <script>
-  const mensajeValidacion = document.getElementById("mensaje-validacion");
-  const seccionValidacion = document.getElementById("validacion");
-
-  if (invitado && personas) {
-    let textoValidacion = "";
-
-    if (/y|,|familia|amigos/i.test(invitado)) {
-      textoValidacion = `Esta invitación para <strong>${invitado}</strong> es válida para <strong>${personas} ${personas === "1" ? "persona" : "personas"}</strong>.`;
-    } else {
-      textoValidacion = `Invitación válida para <strong>${personas} ${personas === "1" ? "persona" : "personas"}</strong>.`;
-    }
-
-    mensajeValidacion.innerHTML = textoValidacion + " 💌";
-    seccionValidacion.style.display = "block";
-
-    // Efecto suave al hacer scroll
-    window.addEventListener('scroll', () => {
-      const rect = seccionValidacion.getBoundingClientRect();
-      if (rect.top < window.innerHeight * 0.85) {
-        seccionValidacion.classList.add('visible');
-      }
-    });
-
-    // Dispara animación si ya está visible
-    window.dispatchEvent(new Event('scroll'));
-  }
-</script>
-<script>
- <script>
   // === BOTÓN DE WHATSAPP PERSONALIZADO ===
   const enlaceWhatsapp = document.getElementById("whatsapp-link");
   const numeroWhatsapp = "529991264032"; // 💛 tu número de confirmación
 
-  // 👇 usamos la misma variable "invitado" que ya declaraste arriba
+  // Recupera los parámetros de la URL
   const params = new URLSearchParams(window.location.search);
   const invitadoWA = params.get("invitado");
   const personasWA = params.get("personas");
 
   if (invitadoWA) {
-    const nombreLimpio = decodeURIComponent(invitadoWA.trim().replace(/\+/g, " "));
+    // ✅ Decodifica correctamente espacios y acentos
+    const nombreLimpio = decodeURIComponent(invitadoWA).replace(/\+/g, " ");
     let mensaje = "";
 
+    // ✅ Construye el texto dependiendo del número de personas
     if (personasWA) {
       const plural = personasWA === "1" ? "persona" : "personas";
       mensaje = `¡Hola! Soy ${nombreLimpio} y confirmo nuestra asistencia (${personasWA} ${plural}) a la boda de Elizabeth y Wilbert 💛`;
@@ -765,22 +738,18 @@
       mensaje = `¡Hola! Soy ${nombreLimpio} y confirmo mi asistencia a la boda de Elizabeth y Wilbert 💍`;
     }
 
+    // ✅ Codifica el mensaje final
     const mensajeCodificado = encodeURIComponent(mensaje);
+
+    // ✅ Asigna el enlace y muestra el botón
     enlaceWhatsapp.href = `https://wa.me/${numeroWhatsapp}?text=${mensajeCodificado}`;
-    enlaceWhatsapp.style.display = "inline-block"; // 🔥 mostrar botón
+    enlaceWhatsapp.style.display = "inline-block";
+    console.log("✅ Botón de WhatsApp activado para:", nombreLimpio);
   } else {
-    console.log("⚠️ No se detectó invitado, botón oculto");
+    console.log("⚠️ No hay parámetro 'invitado' en la URL, botón oculto");
   }
 </script>
-
-
   
 </body>
 </html>
-
-
-
-
-
-
 
