@@ -526,7 +526,7 @@
         Ayúdanos a organizar todo con tiempo ✨<br/>Por favor confirma tu asistencia.
       </p>
       <div class="btn-group">
-        <a id="whatsapp-link" class="btn-pill" href="#" target="_blank">Confirmar por WhatsApp</a>
+        <a class="btn-pill" href="https://wa.me/529991264032?text=Hola!%20Confirmo%20mi%20asistencia%20a%20la%20boda%20de%20Elizabeth%20y%20Wilbert%20<3" target="_blank">Confirmar por WhatsApp</a>
         <!--<a class="btn-pill btn-dark" href="https://forms.gle/TU-FORM-AQUI" target="_blank">Llenar formulario</a> -->
       </div>
     </div>
@@ -557,32 +557,6 @@
       updateCountdown();setInterval(updateCountdown,60000);
     })();
   </script>
-<script>
-  // === PERSONALIZAR MENSAJE DE WHATSAPP ===
-  const enlaceWhatsapp = document.getElementById("whatsapp-link");
-  const numeroWhatsapp = "529991264032"; // 📱 tu número
-
-  // obtener datos de la URL
-  const params = new URLSearchParams(window.location.search);
-  const invitadoWA = params.get("invitado");
-  const personasWA = params.get("personas");
-
-  // mensaje base
-  let mensaje = "¡Hola! Confirmo mi asistencia a la boda de Elizabeth y Wilbert 💍";
-
-  if (invitadoWA) {
-    const nombreLimpio = invitadoWA.replace(/%20/g, " ");
-    if (personasWA) {
-      mensaje = `¡Hola! Somos ${nombreLimpio} y confirmo nuestra asistencia (${personasWA} ${personasWA === "1" ? "persona" : "personas"}) a la boda de Elizabeth y Wilbert 💛`;
-    } else {
-      mensaje = `¡Hola! Soy ${nombreLimpio} y confirmo mi asistencia a la boda de Elizabeth y Wilbert 💍`;
-    }
-  }
-
-  // armar link
-  const mensajeCodificado = encodeURIComponent(mensaje);
-  enlaceWhatsapp.href = `https://wa.me/${numeroWhatsapp}?text=${mensajeCodificado}`;
-</script>
 
   <!-- BOTÓN MUSICAL -->
   <audio id="bg-music" src="musica.mp3" loop></audio>
@@ -771,6 +745,7 @@
   
 </body>
 </html>
+
 
 
 
