@@ -353,34 +353,6 @@
   display: block;
   box-shadow: 0 6px 14px rgba(0,0,0,.12);
 }
-    /* card del numero de invitados */
-#validacion-card {
-  background-color: rgba(156, 175, 136, 0.1);
-  border: 1px solid rgba(156, 175, 136, 0.3);
-  text-align: center;
-  font-size: 0.95rem;
-}
-    /* === Animación fade-up para validación === */
-#validacion {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: all 0.9s cubic-bezier(.16,.84,.44,1);
-}
-
-#validacion.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-/* === Animación suave al mostrar la validación ===*/
-window.addEventListener('scroll', () => {
-  const seccion = document.getElementById('validacion');
-  const rect = seccion.getBoundingClientRect();
-
-  if (rect.top < window.innerHeight * 0.85) {
-    seccion.classList.add('visible');
-  }
-});
-
 
   </style>
 
@@ -656,31 +628,22 @@ window.addEventListener('scroll', () => {
   const text = document.getElementById('welcome-text');
 
   // Detectar nombre del invitado desde la URL
-  // =============================
-// SCRIPT DE BIENVENIDA PERSONALIZADA
-// =============================
-const params = new URLSearchParams(window.location.search);
-const invitado = params.get("nombre");
-const personas = params.get("personas"); // 👈 número de personas
+  const params = new URLSearchParams(window.location.search);
+  const invitado = params.get('invitado');
 
-// selecciona los elementos del overlay de bienvenida
-const overlay = document.getElementById("overlay");
-const title = document.getElementById("welcome-title");
-const text = document.getElementById("welcome-text");
-const enterBtn = document.getElementById("enter-btn");
-
-if (invitado) {
+ if (invitado) {
   const nombreLimpio = invitado.trim();
   const nombreMinus = nombreLimpio.toLowerCase();
 
-  // lista de nombres femeninos comunes 🇲🇽
+  // lista de nombres femeninos comunes (puedes añadir más si quieres)
   const nombresFemeninos = [
     "ana","sofia","maria","laura","elizabeth","elisabeth","eli","andrea","paula",
     "carmen","isabel","fernanda","valeria","mariana","natalia","daniela",
     "alejandra","guadalupe","luz","monica","patricia","gabriela","marisol",
-    "beatriz","leticia","veronica","adriana","carla","silvia"
+    "beatriz","leticia","veronica","adriana","carla","silvia","Jenny", "selene"
   ];
 
+  // detecta si hay plural (familia, amigos, nombres unidos por “y” o coma)
   const esPlural = /y|,|familia|amigos/i.test(nombreLimpio);
   const esFemenino = nombresFemeninos.some(n => nombreMinus.includes(n));
 
@@ -696,50 +659,13 @@ if (invitado) {
     textoSaludo = `Nos alegra mucho que estés aquí para compartir este día tan especial 💛`;
   } 
   else {
+    // saludo neutro elegante si no se puede determinar
     tituloSaludo = `¡Hola, ${nombreLimpio}!`;
     textoSaludo = `Qué alegría tenerte aquí para celebrar con nosotros 💍`;
   }
 
-  // agrega número de personas si está presente
-  if (personas) {
-    textoSaludo += `<br><br>Esta invitación es válida para <strong>${personas} ${personas === "1" ? "persona" : "personas"}</strong> 💌`;
-  }
-
   title.textContent = tituloSaludo;
-  text.innerHTML = textoSaludo;
-}
-
-// Evento del botón “Entrar”
-enterBtn.addEventListener('click', () => {
-  overlay.style.opacity = '0';
-  setTimeout(() => {
-    overlay.style.display = 'none';
-  }, 1000);
-
-  // 🎵 inicia música automáticamente
-  setTimeout(() => {
-    const audio = document.getElementById('bg-music');
-    audio.play().catch(() => {});
-  }, 600);
-});
-
-// =============================
-// MOSTRAR VALIDACIÓN FINAL EN FOOTER
-// =============================
-const mensajeValidacion = document.getElementById("mensaje-validacion");
-const seccionValidacion = document.getElementById("validacion");
-
-if (invitado && personas) {
-  let textoValidacion = "";
-
-  if (/y|,|familia|amigos/i.test(invitado)) {
-    textoValidacion = `Esta invitación para <strong>${invitado}</strong> es válida para <strong>${personas} ${personas === "1" ? "persona" : "personas"}</strong>.`;
-  } else {
-    textoValidacion = `Invitación válida para <strong>${personas} ${personas === "1" ? "persona" : "personas"}</strong>.`;
-  }
-
-  mensajeValidacion.innerHTML = textoValidacion + " 💌";
-  seccionValidacion.style.display = "block";
+  text.textContent = textoSaludo;
 }
 
   // Animación al presionar Entrar
@@ -756,49 +682,6 @@ if (invitado && personas) {
   }, 600);
   });
 </script>
-  <!-- =======================
-     VALIDACIÓN DE INVITACIÓN (al final)
-======================= -->
-<section class="section" id="validacion" style="display:none;">
-  <div class="card delay-4" id="validacion-card">
-    <h2 class="section-title">Invitación personal</h2>
-    <p class="note" id="mensaje-validacion"></p>
-  </div>
-</section>
-
+  
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
