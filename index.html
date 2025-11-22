@@ -798,15 +798,24 @@
     // mensaje por defecto (si no hay invitado en el link)
     let mensaje = "Hola! Confirmo mi asistencia a la boda de Elizabeth y Wilbert 💍";
 
-    if (invitadoWA) {
-      const nombreLimpio = invitadoWA.trim(); // URLSearchParams ya quita %20
-      if (personasWA) {
-        const plural = personasWA === "1" ? "persona" : "personas";
-        mensaje = `¡Hola! Soy ${nombreLimpio} y confirmo nuestra asistencia (${personasWA} ${plural}) a la boda de Elizabeth y Wilbert 💛`;
-      } else {
-        mensaje = `¡Hola! Soy ${nombreLimpio} y confirmo mi asistencia a la boda de Elizabeth y Wilbert 💍`;
-      }
+   if (invitadoWA) {
+  const nombreLimpio = invitadoWA.trim();
+
+  if (personasWA) {
+    if (personasWA === "1") {
+      // Si es una sola persona
+      mensaje = `¡Hola! Soy ${nombreLimpio} y confirmo mi asistencia a la boda de Elizabeth y Wilbert 💛`;
+    } else {
+      // Dos o más personas
+      const plural = personasWA === "1" ? "persona" : "personas";
+      mensaje = `¡Hola! Somos ${nombreLimpio} y confirmamos nuestra asistencia (${personasWA} ${plural}) a la boda de Elizabeth y Wilbert 💛`;
     }
+  } else {
+    // Si no se especifica número de personas
+    mensaje = `¡Hola! Soy ${nombreLimpio} y confirmo mi asistencia a la boda de Elizabeth y Wilbert 💍`;
+  }
+}
+
 
     const numeroWhatsapp = "529991264032";
     const mensajeCodificado = encodeURIComponent(mensaje);
@@ -817,5 +826,6 @@
 
 </body>
 </html>
+
 
 
