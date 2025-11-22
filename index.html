@@ -526,9 +526,13 @@
         Ayúdanos a organizar todo con tiempo ✨<br/>Por favor confirma tu asistencia.
       </p>
       <div class="btn-group">
-        <a id="whatsapp-link" class="btn-pill" href="#" target="_blank" style="display:none;">
-  Confirmar por WhatsApp 💬
+       <a id="whatsapp-link"
+   class="btn-pill"
+   href="https://wa.me/529991264032?text=Hola!%20Confirmo%20mi%20asistencia%20a%20la%20boda%20de%20Elizabeth%20y%20Wilbert%20💍"
+   target="_blank">
+  Confirmar por WhatsApp
         </a>
+
         <!--<a class="btn-pill btn-dark" href="https://forms.gle/TU-FORM-AQUI" target="_blank">Llenar formulario</a> -->
       </div>
     </div>
@@ -743,7 +747,7 @@
     window.dispatchEvent(new Event('scroll'));
   }
 </script>
-  <script>
+  <!-- <script>
   /* === BOTÓN DE WHATSAPP PERSONALIZADO === */
 
   const enlaceWhatsapp = document.getElementById("whatsapp-link");
@@ -782,8 +786,36 @@
     // mostrar botón
     enlaceWhatsapp.style.display = "inline-block";
   }
+</script> -->
+<script>
+  // === PERSONALIZAR MENSAJE DEL BOTÓN DE WHATSAPP ===
+  const whatsappLink = document.getElementById("whatsapp-link");
+  if (whatsappLink) {
+    const paramsWA = new URLSearchParams(window.location.search);
+    const invitadoWA = paramsWA.get("invitado");
+    const personasWA = paramsWA.get("personas");
+
+    // mensaje por defecto (si no hay invitado en el link)
+    let mensaje = "Hola! Confirmo mi asistencia a la boda de Elizabeth y Wilbert 💍";
+
+    if (invitadoWA) {
+      const nombreLimpio = invitadoWA.trim(); // URLSearchParams ya quita %20
+      if (personasWA) {
+        const plural = personasWA === "1" ? "persona" : "personas";
+        mensaje = `¡Hola! Soy ${nombreLimpio} y confirmo nuestra asistencia (${personasWA} ${plural}) a la boda de Elizabeth y Wilbert 💛`;
+      } else {
+        mensaje = `¡Hola! Soy ${nombreLimpio} y confirmo mi asistencia a la boda de Elizabeth y Wilbert 💍`;
+      }
+    }
+
+    const numeroWhatsapp = "529991264032";
+    const mensajeCodificado = encodeURIComponent(mensaje);
+
+    whatsappLink.href = `https://wa.me/${numeroWhatsapp}?text=${mensajeCodificado}`;
+  }
 </script>
 
 </body>
 </html>
+
 
